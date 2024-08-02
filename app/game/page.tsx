@@ -4,7 +4,7 @@ import { Quiz } from "./components/quiz";
 
 const Game = () => {
     return (
-        <div className="text-black border-4 border-black  h-full w-full p-8  grid grid-cols-4 relative z-[0] before:absolute before:h-full before:w-full  before:-z-[1] before:bg-slate-200 before:opacity-30">
+        <div className="text-black border-4 border-black  h-full w-full p-8  grid grid-cols-4 relative z-[0]  before:absolute before:flex before:left-[30px] before:top-[30px] before:h-[calc(100%-60px)] before:w-[calc(100%-60px)]  before:-z-[1] before:bg-slate-200 before:opacity-30">
             <div className=" relative w-full h-full border-4 border-black row-span-3 col-span-3">
                     <Image
                         className=" object-contain"
