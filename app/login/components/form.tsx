@@ -49,7 +49,7 @@ export function ProfileForm() {
                     email: value.email,
                     player1: value.Player1_name,
                     player2: value.Player2_name,
-                    score:""
+                    score:"0"
                 });
             }
             p2();
