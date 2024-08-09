@@ -11,8 +11,25 @@ body,
 }
 
 body{
-  background-image: url("/cover.jpg");
+  background-image: url("/cover2.jpeg");
   background-size: cover;
   box-shadow: inset 0px 0px 30px 30px #000;
 }
 
+.animated-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: moveRight 2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translate(-1080%, -40%) scale(1.2);
+  }
+  100% {
+    transform: translate(2670%, 5%) scale(0.7);
+    background-color: transparent;
+  }
+}
