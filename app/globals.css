@@ -29,7 +29,6 @@ body{
     transform: translate(-1080%, -40%) scale(1.2);
   }
   100% {
-    transform: translate(2670%, 5%) scale(0.7);
-    background-color: transparent;
+    transform: translate(3170%, 5%) scale(0.7);
   }
 }
