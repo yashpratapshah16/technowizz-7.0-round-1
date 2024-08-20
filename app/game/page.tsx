@@ -24,12 +24,14 @@ const desc=["Detectives Vector Clark and Shaw Chen enter Maria James' room, now 
 
 const Game = () => {
 
+    const [loading,SetLoading]=useState(false);
+
     const router = useRouter();
     const [User, Loading, Error] = useAuthState(auth());
 
     useEffect(() => {
         if (!Loading && !User) {
-            router.push("/login")
+            // router.push("/login")
         }
     }, [Loading, User, router])
 
@@ -73,6 +75,7 @@ const Game = () => {
 
 
     useEffect(() => {
+        SetLoading(true);
         const getQs = async () => {
             const q = query(collection(db(), "Questions/1/Scene/" + scene + "/Qs"));
             const d = await getDocs(q);
@@ -82,6 +85,7 @@ const Game = () => {
                 res.push({ id: r.id, Ans: l.Ans, Q: l.Q, title: l.Title, description: l.Description });
             })
             setQs(res);
+            SetLoading(false);
         }
         getQs();
     }, [scene])
@@ -177,13 +181,13 @@ const Game = () => {
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[1] ? "line-through" : ""}>
-                                    {list[1] ? Qs[1]?.title : "???"}
+                                    {!loading &&  list[1] ? Qs[1]?.title : "???"}
                                 </span>
                             </li>
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[2] ? "line-through" : ""}>
-                                    {list[2] ? Qs[2]?.title : "???"}
+                                    {!loading &&    list[2] ? Qs[2]?.title : "???"}
                                 </span>
                             </li>
                         </ul>
@@ -200,7 +204,7 @@ const Game = () => {
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[4] ? "line-through" : ""}>
-                                    {list[4] ? Qs[1]?.title : "???"}
+                                    {!loading &&  list[4] ? Qs[1]?.title : "???"}
                                 </span>
                             </li>
                         </ul>
@@ -217,13 +221,13 @@ const Game = () => {
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[6] ? "line-through" : ""}>
-                                    {list[6] ? Qs[1]?.title : "???"}
+                                    {!loading &&  list[6] ? Qs[1]?.title : "???"}
                                 </span>
                             </li>
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[7] ? "line-through" : ""}>
-                                    {list[7] ? Qs[2]?.title : "???"}
+                                    {!loading &&  list[7] ? Qs[2]?.title : "???"}
                                 </span>
                             </li>
                         </ul>
