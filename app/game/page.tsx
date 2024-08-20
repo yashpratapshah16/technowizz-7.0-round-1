@@ -40,6 +40,7 @@ const Game = () => {
     const [Qs, setQs] = useState(Array<{ id: string, Q: string, Ans: string, title: string, description: string }>);
 
     const [count, setCount] = useState("15:00");
+    const [time,setTime]=useState("00:00");
 
     useEffect(() => {
         const timer = (count: number) => {
@@ -50,9 +51,19 @@ const Game = () => {
             if (min > -1 && min <= 9) minT = "0" + min
             setCount(minT + ":" + secT)
         }
+        const counter = (count: number) => {
+            const min = Math.floor((count) / 60);
+            const sec = (count) % 60;
+            let secT = "" + sec, minT = "" + min;
+            if (sec >= 0 && sec <= 9) secT = `0${sec}`
+            if (min > -1 && min <= 9) minT = "0" + min
+            setTime(minT + ":" + secT)
+        }
         let countdown = 15 * 60;
+        let timedown=0*60;
         const x = setInterval(() => {
             timer(countdown--);
+            counter(timedown++);
             if (countdown < 0) {
                 clearInterval(x);
                 signOut(auth())
@@ -234,7 +245,7 @@ const Game = () => {
                         <CarouselNext size="lg" className=" bg-black w-24 h-12" />
                     </div>
                 </div>
-                <Submit score={score} time={count} />
+                <Submit score={score} time={time} />
             </div>
         </Carousel>
     );

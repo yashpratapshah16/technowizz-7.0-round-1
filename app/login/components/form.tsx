@@ -49,7 +49,8 @@ export function ProfileForm() {
                     email: value.email,
                     player1: value.Player1_name,
                     player2: value.Player2_name,
-                    score:"0"
+                    score:"0",
+                    time:"00:00"
                 });
             }
             p2();
