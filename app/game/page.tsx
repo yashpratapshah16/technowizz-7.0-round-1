@@ -19,19 +19,37 @@ import { signOut } from "firebase/auth";
 
 const defaultQ = "No, this isn't the Cule you're searching for.";
 
-const desc=["Detectives Vector Clark and Shaw Chen enter Maria James' room, now a scene of chaos reflecting her final moments of despair. Amid overturned furniture, scattered belongings, and torn papers, they carefully search for clues that might explain her tragic suicide. A locked box, a phone with missed calls, —all suggest deeper secrets waiting to be uncovered. As they methodically piece together these fragments, they edge closer to understanding the truth behind Maria’s death and the forces that drove her to this desperate act.","After uncovering the location from Maria’s phone, Detectives Vector Clark and Shaw Chen embark on a tense pursuit of the elusive Cypher. Their journey leads them to a desolate, isolated area where they discover the Cypher’s temporary headquarters—an abandoned structure shrouded in secrecy. The place, though seemingly deserted, holds subtle traces left behind intentionally. These trails—discarded documents, encrypted codes, and strategic markings—are clues left by the Cypher, challenging the detectives to decode them. With every step, Vector and Shaw get closer to unmasking the Cypher’s true identity and uncovering the sinister plans hidden within this barren landscape.","Following a meticulous search at the previous locations, Detectives Vector Clark and Shaw Chen arrive at 'Dream A Smile', Maria James’ cherished second home—an NGO where the devastating fraud took place. This place, once a symbol of hope and compassion, now holds the secrets to Maria’s downfall. The detectives comb through the rooms, carefully examining financial records, donation logs, and digital devices, all in search of the crucial clues that could unravel the mystery. Each piece of evidence they uncover brings them one step closer to understanding the full extent of the fraud that ultimately led to Maria’s tragic fate."]
+const desc = ["Detectives Vector Clark and Shaw Chen enter Maria James' room, now a scene of chaos reflecting her final moments of despair. Amid overturned furniture, scattered belongings, and torn papers, they carefully search for clues that might explain her tragic suicide. A locked box, a phone with missed calls, —all suggest deeper secrets waiting to be uncovered. As they methodically piece together these fragments, they edge closer to understanding the truth behind Maria’s death and the forces that drove her to this desperate act.", "After uncovering the location from Maria’s phone, Detectives Vector Clark and Shaw Chen embark on a tense pursuit of the elusive Cypher. Their journey leads them to a desolate, isolated area where they discover the Cypher’s temporary headquarters—an abandoned structure shrouded in secrecy. The place, though seemingly deserted, holds subtle traces left behind intentionally. These trails—discarded documents, encrypted codes, and strategic markings—are clues left by the Cypher, challenging the detectives to decode them. With every step, Vector and Shaw get closer to unmasking the Cypher’s true identity and uncovering the sinister plans hidden within this barren landscape.", "Following a meticulous search at the previous locations, Detectives Vector Clark and Shaw Chen arrive at 'Dream A Smile', Maria James’ cherished second home—an NGO where the devastating fraud took place. This place, once a symbol of hope and compassion, now holds the secrets to Maria’s downfall. The detectives comb through the rooms, carefully examining financial records, donation logs, and digital devices, all in search of the crucial clues that could unravel the mystery. Each piece of evidence they uncover brings them one step closer to understanding the full extent of the fraud that ultimately led to Maria’s tragic fate."]
 
 
 const Game = () => {
+    useEffect(() => {
+        const handleKeyDown = (event: any) => {
+            // Prevent F5 key press
+            if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
+                event.preventDefault();
+                // Optionally display a message or alert
+                // alert('Refresh is disabled on this page. Please use other means to navigate.');
+            }
+        };
 
-    const [loading,SetLoading]=useState(false);
+        // Add event listener for keydown events
+        window.addEventListener('keydown', handleKeyDown);
+
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
+    const [loading, SetLoading] = useState(false);
 
     const router = useRouter();
     const [User, Loading, Error] = useAuthState(auth());
 
     useEffect(() => {
         if (!Loading && !User) {
-            // router.push("/login")
+            router.push("/login")
         }
     }, [Loading, User, router])
 
@@ -42,7 +60,7 @@ const Game = () => {
     const [Qs, setQs] = useState(Array<{ id: string, Q: string, Ans: string, title: string, description: string }>);
 
     const [count, setCount] = useState("15:00");
-    const [time,setTime]=useState("00:00");
+    const [time, setTime] = useState("00:00");
 
     useEffect(() => {
         const timer = (count: number) => {
@@ -61,8 +79,8 @@ const Game = () => {
             if (min > -1 && min <= 9) minT = "0" + min
             setTime(minT + ":" + secT)
         }
-        let countdown = 15 * 60;
-        let timedown=0*60;
+        let countdown = 15*60;
+        let timedown = 0 * 60;
         const x = setInterval(() => {
             timer(countdown--);
             counter(timedown++);
@@ -116,53 +134,53 @@ const Game = () => {
                     <CarouselItem className="relative">
                         <Image
                             className=" object-contain"
-                            src="/bedroom-scene-2-BW.jpg"
+                            src="/bedroom-scene-modified.jpeg"
                             alt="ngo"
                             fill
                         />
-                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="right-[35%] bottom-[12%] w-[5%] h-[5%] " />
-                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[28%] left-[36%]  w-[1%] h-[4%] " />
-                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="bottom-[11%] left-[28%]  w-[6%] h-[5%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[20%] top-[45%] w-[6%] h-[11%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[24%] bottom-[3%] w-[7%] h-[7%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[44%] bottom-[9%] w-[5%] h-[5%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[39%] top-[31%] w-[5%] h-[8%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[37%] top-[21%] w-[4%] h-[8%] " />
+                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="left-[22%] bottom-[14%] w-[4%] h-[4%] " />
+                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[7%] left-[19%]  w-[5%] h-[5%] " />
+                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="bottom-[12%] left-[5%]  w-[4%] h-[4%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[20%] top-[22%] w-[8%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[24%] bottom-[2%] w-[8%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[45%] top-[50%] w-[5%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[12%] top-[60%] w-[2%] h-[7%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[13%] top-[45%] w-[2%] h-[7%] " />
                     </CarouselItem>
                     <CarouselItem className="relative">
                         <Image
                             className=" object-contain"
-                            src="/hut-scene-2-BW.jpg"
+                            src="/hut-scene-modified.jpg"
                             alt="ngo"
                             fill
                         />
-                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="left-[3%] top-[45%] w-[7%] h-[20%] " />
-                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[36%] right-[3%]  w-[2%] h-[7%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[37%] top-[43%] w-[7%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[45%] top-[41%] w-[10%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[42%] bottom-[26%] w-[3%] h-[3%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[29%] bottom-[9%] w-[7%] h-[7%] " />
+                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="left-[44%] top-[44%] w-[8%] h-[10%] " />
+                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[6%] right-[27%]  w-[2%] h-[2%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[27%] top-[43%] w-[5%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[20%] top-[43%] w-[6%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[37%] bottom-[5%] w-[5%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[25%] top-[13%] w-[5%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[22%] bottom-[10%] w-[5%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[15%] bottom-[10%] w-[5%] h-[5%] " />
                     </CarouselItem>
                     <CarouselItem className="relative">
                         <Image
                             className=" object-contain"
-                            src="/ngo-scene-2-BW.jpg"
+                            src="/ngo-scene-modified.jpg"
                             alt="ngo"
                             fill
                         />
-                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="right-[39%] top-[42%] w-[3%] h-[6%] " />
-                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="top-[46%] left-[10%]  w-[4%] h-[4%] " />
-                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="bottom-[1%] left-[3%]  w-[10%] h-[23%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[19%] top-[32%] w-[11%] h-[15%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[47%] bottom-[24%] w-[5%] h-[13%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[10%] bottom-[1%] w-[5%] h-[7%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[15%] bottom-[12%] w-[10%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[15%] top-[32%] w-[5%] h-[8%] " />
+                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="   left-[25%] top-[46%] w-[10%] h-[10%] " />
+                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="   bottom-[1%] left-[43%]  w-[7%] h-[7%] " />
+                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="   bottom-[10%] right-[7%]  w-[13%] h-[17%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="    left-[52%] top-[44%] w-[8%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="  left-[32%] top-[17%] w-[8%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="  right-[20%] top-[7%] w-[5%] h-[10%] " />
                     </CarouselItem>
                 </CarouselContent>
             </div>
             <div className=" bg-black text-white flex flex-col items-center justify-center w-full h-full min-h-full max-h-0 border-4 border-black col-span-3">
-                <h1 className="text-3xl">Scene {scene+1}</h1>
+                <h1 className="text-3xl">Scene {scene + 1}</h1>
                 <p className="font-semibold text-base">{desc[scene]}</p>
             </div>
             <div className="  w-full h-full flex flex-col pt-2 border-4 border-black row-span-3 row-end-1 col-start-4 min-h-full max-h-0" >
@@ -181,13 +199,13 @@ const Game = () => {
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[1] ? "line-through" : ""}>
-                                    {!loading &&  list[1] ? Qs[1]?.title : "???"}
+                                    {!loading && list[1] ? Qs[1]?.title : "???"}
                                 </span>
                             </li>
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[2] ? "line-through" : ""}>
-                                    {!loading &&    list[2] ? Qs[2]?.title : "???"}
+                                    {!loading && list[2] ? Qs[2]?.title : "???"}
                                 </span>
                             </li>
                         </ul>
@@ -204,7 +222,7 @@ const Game = () => {
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[4] ? "line-through" : ""}>
-                                    {!loading &&  list[4] ? Qs[1]?.title : "???"}
+                                    {!loading && list[4] ? Qs[1]?.title : "???"}
                                 </span>
                             </li>
                         </ul>
@@ -221,13 +239,13 @@ const Game = () => {
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[6] ? "line-through" : ""}>
-                                    {!loading &&  list[6] ? Qs[1]?.title : "???"}
+                                    {!loading && list[6] ? Qs[1]?.title : "???"}
                                 </span>
                             </li>
                             <li className="text-xl  ml-2 p-4 pb-0 font-semibold">
                                 <span className=" text-white mr-2">{">"}</span>
                                 <span className={list[7] ? "line-through" : ""}>
-                                    {!loading &&  list[7] ? Qs[2]?.title : "???"}
+                                    {!loading && list[7] ? Qs[2]?.title : "???"}
                                 </span>
                             </li>
                         </ul>

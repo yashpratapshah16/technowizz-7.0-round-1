@@ -45,9 +45,7 @@ const Submit: React.FC<SubmitProps> = ({ score,time }) => {
         const res=await getDocs(q);
         await updateDoc(doc(db(),"Users",res.docs[0].id),{score,time});
         setLoading(false);
-
         await signOut(auth());
-        router.push("/end");
     }
 
     return (
