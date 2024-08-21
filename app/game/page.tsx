@@ -95,7 +95,7 @@ const Game = () => {
     useEffect(() => {
         SetLoading(true);
         const getQs = async () => {
-            const q = query(collection(db(), "Questions/1/Scene/" + scene + "/Qs"));
+            const q = query(collection(db(), "Questions/0/Scene/" + scene + "/Qs"));
             const d = await getDocs(q);
             const res: Array<{ id: string, Q: string, Ans: string, title: string, description: string }> = [];
             d.docs.forEach((r) => {
