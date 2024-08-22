@@ -95,7 +95,7 @@ const Game = () => {
     useEffect(() => {
         SetLoading(true);
         const getQs = async () => {
-            const q = query(collection(db(), "Questions/0/Scene/" + scene + "/Qs"));
+            const q = query(collection(db(), "Questions/1/Scene/" + scene + "/Qs"));
             const d = await getDocs(q);
             const res: Array<{ id: string, Q: string, Ans: string, title: string, description: string }> = [];
             d.docs.forEach((r) => {
@@ -130,52 +130,52 @@ const Game = () => {
     return (
         <Carousel className="text-black border-4 border-black  h-full w-full p-8  grid grid-cols-4 relative z-[0]  before:absolute before:flex before:left-[30px] before:top-[30px] before:h-[calc(100%-60px)] before:w-[calc(100%-60px)]  before:-z-[1] before:bg-slate-200 before:opacity-30">
             <div className="w-full h-full border-4 border-black row-span-3 col-span-3">
-                <CarouselContent className="h-full  m-auto">
+            <CarouselContent className="h-full  m-auto">
                     <CarouselItem className="relative">
                         <Image
                             className=" object-contain"
-                            src="/bedroom-scene-modified.jpeg"
+                            src="/bedroom-scene-2-BW.jpg"
                             alt="ngo"
                             fill
                         />
-                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="left-[22%] bottom-[14%] w-[4%] h-[4%] " />
-                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[7%] left-[19%]  w-[5%] h-[5%] " />
-                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="bottom-[12%] left-[5%]  w-[4%] h-[4%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[20%] top-[22%] w-[8%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[24%] bottom-[2%] w-[8%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[45%] top-[50%] w-[5%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[12%] top-[60%] w-[2%] h-[7%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[13%] top-[45%] w-[2%] h-[7%] " />
+                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="right-[35%] bottom-[12%] w-[5%] h-[5%] " />
+                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[28%] left-[36%]  w-[1%] h-[4%] " />
+                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="bottom-[11%] left-[28%]  w-[6%] h-[5%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[20%] top-[45%] w-[6%] h-[11%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[24%] bottom-[3%] w-[7%] h-[7%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[44%] bottom-[9%] w-[5%] h-[5%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[39%] top-[31%] w-[5%] h-[8%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[37%] top-[21%] w-[4%] h-[8%] " />
                     </CarouselItem>
                     <CarouselItem className="relative">
                         <Image
                             className=" object-contain"
-                            src="/hut-scene-modified.jpg"
+                            src="/hut-scene-2-BW.jpg"
                             alt="ngo"
                             fill
                         />
-                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="left-[44%] top-[44%] w-[8%] h-[10%] " />
-                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[6%] right-[27%]  w-[2%] h-[2%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[27%] top-[43%] w-[5%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[20%] top-[43%] w-[6%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[37%] bottom-[5%] w-[5%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[25%] top-[13%] w-[5%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[22%] bottom-[10%] w-[5%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[15%] bottom-[10%] w-[5%] h-[5%] " />
+                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="left-[3%] top-[45%] w-[7%] h-[20%] " />
+                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="bottom-[36%] right-[3%]  w-[2%] h-[7%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[37%] top-[43%] w-[7%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[45%] top-[41%] w-[10%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[42%] bottom-[26%] w-[3%] h-[3%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="left-[29%] bottom-[9%] w-[7%] h-[7%] " />
                     </CarouselItem>
                     <CarouselItem className="relative">
                         <Image
                             className=" object-contain"
-                            src="/ngo-scene-modified.jpg"
+                            src="/ngo-scene-2-BW.jpg"
                             alt="ngo"
                             fill
                         />
-                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="   left-[25%] top-[46%] w-[10%] h-[10%] " />
-                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="   bottom-[1%] left-[43%]  w-[7%] h-[7%] " />
-                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="   bottom-[10%] right-[7%]  w-[13%] h-[17%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="    left-[52%] top-[44%] w-[8%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="  left-[32%] top-[17%] w-[8%] h-[10%] " />
-                        <Quiz dis q={defaultQ} id={1} check={check} classname="  right-[20%] top-[7%] w-[5%] h-[10%] " />
+                        <Quiz title={Qs[0]?.title} description={Qs[0]?.description} q={Qs[0]?.Q} id={0} check={check} classname="right-[39%] top-[42%] w-[3%] h-[6%] " />
+                        <Quiz title={Qs[1]?.title} description={Qs[1]?.description} q={Qs[1]?.Q} id={1} check={check} classname="top-[46%] left-[10%]  w-[4%] h-[4%] " />
+                        <Quiz title={Qs[2]?.title} description={Qs[2]?.description} q={Qs[2]?.Q} id={2} check={check} classname="bottom-[1%] left-[3%]  w-[10%] h-[23%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[19%] top-[32%] w-[11%] h-[15%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" left-[47%] bottom-[24%] w-[5%] h-[13%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname=" right-[10%] bottom-[1%] w-[5%] h-[7%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[15%] bottom-[12%] w-[10%] h-[10%] " />
+                        <Quiz dis q={defaultQ} id={1} check={check} classname="right-[15%] top-[32%] w-[5%] h-[8%] " />
                     </CarouselItem>
                 </CarouselContent>
             </div>
