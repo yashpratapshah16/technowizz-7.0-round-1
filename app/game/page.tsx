@@ -25,7 +25,7 @@ const desc = ["Detectives Vector Clark and Shaw Chen enter Maria James' room, no
 const Game = () => {
     useEffect(() => {
         const handleKeyDown = (event: any) => {
-            // Prevent F5 key press
+            // Prevent F5 key presss
             if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
                 event.preventDefault();
                 // Optionally display a message or alert
